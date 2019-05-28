@@ -12,7 +12,7 @@ import PostList from '../../components/PostList'
 
 class BlogIndex extends React.Component {
   componentDidMount () {
-    this.props.dispatch(startClock())
+    this.props.store.dispatch(startClock())
   }
 
   render () {
@@ -26,6 +26,4 @@ class BlogIndex extends React.Component {
   }
 }
 
-export default withReduxSaga(
-  withApollo(BlogIndex)
-)
+export default withReduxSaga(withApollo(BlogIndex))

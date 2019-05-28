@@ -1,4 +1,4 @@
-/* global describe, test, expect */
+/* eslint-env jest */
 
 import cheerio from 'cheerio'
 
@@ -27,6 +27,16 @@ export default function ({ app }, suiteName, render, fetch) {
     test('renders public config on the server only', async () => {
       const $ = await get$('/next-config')
       expect($('#server-and-client').text() === '/static')
+    })
+
+    test('renders the build id in development mode', async () => {
+      const $ = await get$('/build-id')
+      expect($('#buildId').text() === '-')
+    })
+
+    test('correctly imports a package that defines `module` but no `main` in package.json', async () => {
+      const $ = await get$('/module-only-content')
+      expect($('#messageInAPackage').text() === 'OK')
     })
   })
 }

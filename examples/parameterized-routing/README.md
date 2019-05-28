@@ -1,12 +1,10 @@
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/zeit/next.js/tree/master/examples/parameterized-routing)
-
 # Parametrized routes example (dynamic routing)
 
 ## How to use
 
 ### Using `create-next-app`
 
-Download [`create-next-app`](https://github.com/segmentio/create-next-app) to bootstrap the example:
+Execute [`create-next-app`](https://github.com/segmentio/create-next-app) with [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) or [npx](https://github.com/zkat/npx#readme) to bootstrap the example:
 
 ```bash
 npx create-next-app --example parameterized-routing parameterized-routing-app
@@ -16,7 +14,7 @@ yarn create next-app --example parameterized-routing parameterized-routing-app
 
 ### Download manually
 
-Download the example [or clone the repo](https://github.com/zeit/next.js):
+Download the example:
 
 ```bash
 curl https://codeload.github.com/zeit/next.js/tar.gz/canary | tar -xz --strip=2 next.js-canary/examples/parameterized-routing
@@ -28,13 +26,12 @@ Install it and run:
 ```bash
 npm install
 npm run dev
+# or
+yarn
+yarn dev
 ```
 
-Deploy it to the cloud with [now](https://zeit.co/now) ([download](https://zeit.co/download))
-
-```bash
-now
-```
+See now documentation [here](https://zeit.co/docs/v2/deployments/routes/) and Next.js example [here](https://zeit.co/examples/nextjs/) for info on deploying with [now](https://zeit.co/now) ([download](https://zeit.co/download))
 
 ## The idea behind the example
 

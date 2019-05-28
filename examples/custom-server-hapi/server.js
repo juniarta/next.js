@@ -1,6 +1,10 @@
 const next = require('next')
 const Hapi = require('hapi')
-const { pathWrapper, defaultHandlerWrapper, nextHandlerWrapper } = require('./next-wrapper')
+const {
+  pathWrapper,
+  defaultHandlerWrapper,
+  nextHandlerWrapper
+} = require('./next-wrapper')
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
@@ -9,9 +13,7 @@ const server = new Hapi.Server({
   port
 })
 
-app
-.prepare()
-.then(async () => {
+app.prepare().then(async () => {
   server.route({
     method: 'GET',
     path: '/a',
@@ -26,13 +28,19 @@ app
 
   server.route({
     method: 'GET',
-    path: '/_next/{p*}', /* next specific routes */
+    path: '/_next/{p*}' /* next specific routes */,
     handler: nextHandlerWrapper(app)
   })
 
   server.route({
     method: 'GET',
-    path: '/{p*}', /* catch all route */
+    path: '/static/{p*}' /* use next to handle static files */,
+    handler: nextHandlerWrapper(app)
+  })
+
+  server.route({
+    method: 'GET',
+    path: '/{p*}' /* catch all route */,
     handler: defaultHandlerWrapper(app)
   })
 

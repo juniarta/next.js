@@ -1,5 +1,3 @@
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/zeit/next.js/tree/master/examples/with-higher-order-component)
-
 # Higher Order Component example
 
 ## How to use
@@ -17,7 +15,7 @@ yarn create next-app --example with-higher-order-component with-higher-order-com
 
 ### Download manually
 
-Download the example [or clone the repo](https://github.com/zeit/next.js):
+Download the example:
 
 Install it and run:
 
@@ -26,6 +24,9 @@ Install it and run:
 ```bash
 npm install
 npm run dev
+# or
+yarn
+yarn dev
 ```
 
 **yarn**

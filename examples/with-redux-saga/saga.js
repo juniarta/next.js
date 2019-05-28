@@ -1,11 +1,10 @@
 /* global fetch */
 
-import {delay} from 'redux-saga'
-import {all, call, put, take, takeLatest} from 'redux-saga/effects'
+import { all, call, delay, put, take, takeLatest } from 'redux-saga/effects'
 import es6promise from 'es6-promise'
 import 'isomorphic-unfetch'
 
-import {actionTypes, failure, loadDataSuccess, tickClock} from './actions'
+import { actionTypes, failure, loadDataSuccess, tickClock } from './actions'
 
 es6promise.polyfill()
 
@@ -13,7 +12,7 @@ function * runClockSaga () {
   yield take(actionTypes.START_CLOCK)
   while (true) {
     yield put(tickClock(false))
-    yield call(delay, 1000)
+    yield delay(1000)
   }
 }
 

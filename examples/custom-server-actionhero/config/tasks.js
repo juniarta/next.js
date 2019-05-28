@@ -1,5 +1,5 @@
 exports['default'] = {
-  tasks: (api) => {
+  tasks: api => {
     return {
       // Should this node run a scheduler to promote delayed tasks?
       scheduler: false,
@@ -8,7 +8,7 @@ exports['default'] = {
       // Logging levels of task workers
       workerLogging: {
         failure: 'error', // task failure
-        success: 'info',  // task success
+        success: 'info', // task success
         start: 'info',
         end: 'info',
         cleaning_worker: 'info',
@@ -52,7 +52,7 @@ exports['default'] = {
 }
 
 exports.test = {
-  tasks: (api) => {
+  tasks: api => {
     return {
       timeout: 100,
       checkTimeout: 50

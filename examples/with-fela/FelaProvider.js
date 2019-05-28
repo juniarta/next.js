@@ -1,26 +1,17 @@
+/* eslint-disable */
 import { Component } from 'react'
-import PropTypes from 'prop-types'
-
-import { Provider } from 'react-fela'
+import { RendererProvider } from 'react-fela'
 import getFelaRenderer from './getFelaRenderer'
 
-const clientRenderer = getFelaRenderer()
+const fallbackRenderer = getFelaRenderer()
 
 export default class FelaProvider extends Component {
-  static contextTypes = {
-    renderer: PropTypes.object
-  };
-
-  render () {
-    if (this.context.renderer) {
-      return this.props.children
-    }
-
-    const renderer = this.props.renderer || clientRenderer
+  render() {
+    const renderer = this.props.renderer || fallbackRenderer
     return (
-      <Provider renderer={renderer}>
+      <RendererProvider renderer={renderer}>
         {this.props.children}
-      </Provider>
+      </RendererProvider>
     )
   }
 }

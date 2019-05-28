@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
@@ -11,7 +12,7 @@ class PageCount extends Component {
     this.props.dispatch(countDecrease())
   }
 
-  render () {
+  render() {
     const { count } = this.props
     return (
       <div>

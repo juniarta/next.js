@@ -1,0 +1,13 @@
+{
+  "name": "@next/bundle-analyzer",
+  "version": "8.1.1-canary.39",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": {
+    "url": "zeit/next.js",
+    "directory": "packages/next-bundle-analyzer"
+  },
+  "dependencies": {
+    "webpack-bundle-analyzer": "3.3.2"
+  }
+}

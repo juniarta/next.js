@@ -1,9 +1,8 @@
-
 import React from 'react'
 import Link from 'next/link'
 import 'isomorphic-unfetch'
 
-export default class MyPage extends React.Component {
+export default class Preact extends React.Component {
   static async getInitialProps () {
     // eslint-disable-next-line no-undef
     const res = await fetch('https://api.github.com/repos/developit/preact')
@@ -14,8 +13,10 @@ export default class MyPage extends React.Component {
   render () {
     return (
       <div>
-        <p>Preact has {this.props.stars} ⭐️</p>
-        <Link prefetch href='/'><a>I bet next has more stars (?)</a></Link>
+        <p>Preact has {this.props.stars} ⭝︝</p>
+        <Link prefetch href='/'>
+          <a>I bet next has more stars (?)</a>
+        </Link>
       </div>
     )
   }

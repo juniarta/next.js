@@ -1,10 +1,8 @@
 import React from 'react'
-import { initStore } from '../store'
-import withRedux from 'next-redux-wrapper'
 import PropTypes from 'prop-types'
 import { kea } from 'kea'
 
-@kea({
+const logic = kea({
   path: () => ['kea'],
   actions: () => ({
     increment: amount => ({ amount }),
@@ -28,16 +26,25 @@ import { kea } from 'kea'
     ]
   })
 })
-class App extends React.Component {
-  render () {
+
+@logic
+export default class App extends React.Component {
+  static getInitialProps({ store }) {
+    // Start with counter === 10
+    store.dispatch(logic.actions.increment(10))
+  }
+
+  render() {
     return (
       <div>
         <p>Double Counter: {this.props.doubleCounter}</p>
-        <button type='button' onClick={() => this.actions.increment(1)}>Increment</button>
-        <button type='button' onClick={() => this.actions.decrement(1)}>Decrement</button>
+        <button type="button" onClick={() => this.actions.increment(1)}>
+          Increment
+        </button>
+        <button type="button" onClick={() => this.actions.decrement(1)}>
+          Decrement
+        </button>
       </div>
     )
   }
 }
-
-export default withRedux(initStore)(App)

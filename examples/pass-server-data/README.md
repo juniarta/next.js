@@ -1,10 +1,20 @@
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/zeit/next.js/tree/master/examples/pass-server-data)
-
 # Pass Server Data Directly to a Next.js Page during SSR
 
 ## How to use
 
-Download the example [or clone the repo](https://github.com/zeit/next.js):
+### Using `create-next-app`
+
+Execute [`create-next-app`](https://github.com/segmentio/create-next-app) with [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) or [npx](https://github.com/zkat/npx#readme) to bootstrap the example:
+
+```bash
+npx create-next-app --example pass-server-data pass-server-data-app
+# or
+yarn create next-app --example pass-server-data pass-server-data-app
+```
+
+### Download manually
+
+Download the example:
 
 ```bash
 curl https://codeload.github.com/zeit/next.js/tar.gz/master | tar -xz --strip=2 next.js-master/examples/pass-server-data
@@ -16,6 +26,9 @@ Install it and run:
 ```bash
 npm install
 npm run dev
+# or
+yarn
+yarn dev
 ```
 
 Deploy it to the cloud with [now](https://zeit.co/now) ([download](https://zeit.co/download))
@@ -39,12 +52,12 @@ data cached from an API call) in `operations/get-item.js`. It has two routes: a 
 data from the get-item operation, passed as a query parameter in `routes/item.js`.
 
 We use this data in `pages/item.js` if rendered server-side, or make a fetch request if rendered client-side.
-The server knows whether or not to use next.js to render the route based on the Accept header, which will be 
+The server knows whether or not to use next.js to render the route based on the Accept header, which will be
 `application/json` when we fetch client-side.
 
 Take a look at the following files:
 
-* server.js
-* routes/item.js
-* pages/item.js
-* operations/get-item.js
+- server.js
+- routes/item.js
+- pages/item.js
+- operations/get-item.js

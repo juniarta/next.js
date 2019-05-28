@@ -7,28 +7,24 @@
       packages: ["google-chrome-stable"]
     }
   },
+  env: {
+    HEADLESS: 'false'
+  },
   language: "node_js",
-  node_js: ["6"],
+  node_js: ["8", "10"],
   cache: {
     directories: ["node_modules"]
   },
   before_install: [
-    "rm yarn.lock",
+    "curl -o- -L https://yarnpkg.com/install.sh | bash",
+    "export PATH=\"$HOME/.yarn/bin:$PATH\"",
     "export DISPLAY=:99.0",
     "sh -e /etc/init.d/xvfb start",
     "sleep 3"
   ],
-  after_script: ["npm run coveralls"],
-  deploy: {
-    provider: "npm",
-    email: "leo@zeit.co",
-    tag: "canary",
-    api_key: {
-      secure: "mvLXMXn1z1ri29wAy5/CCrDuO7ZC3gxckcnY5W00cbL8aFuK5buvpizKr3dz1pYX7vC55I+nZMtVa2vn4oOlTae07dd0BYGmmpiwq692XD4P+PHVs8D5MlbiT62vIJl/ezv/TcyoAbfIVPfUfLXA7H6a04Kodyzj3LffannOYpZNTPRNSdNAtkVtHPCuHksVpZoj6WhmC52MBEWkh0TCV3OdbeQAs6z3m6j81XcTduhXdraO4UmyXi/ML+eAgEBSejH70/7O/RSGludBOtIWMuxSrEey4wB4F4/xpN7k4LjPQRS+EtUBg9DSb3vB5y/hGwbDqwx7gGfN/yP/ssc9j3G8syTevv3fxH4ver9kg5tvltTJ8/gOzV7nF2sK1+Nb8legL4fLwHvgThf4sB9dAgNc7R8dYNgYwivkLUrrAy9WJsu7OsXLhg3NpEb9PcbKH7yFwrAzQjRPguVxg7bC02g41v0c2i1UXTb0D0/1KW5Mdg7HYZEw4uUXRhJCLWZbOcBCWdmiB+hwKSaq+aO49C5aX2UAyIsUPmG0OgqY91H/Y09KP3O6jN4j7ADrIIrdMwcyx15UJDZMwADCHHesnzeelDah7w3H6q+/heOA4nzbWhZaYQEDK4/aouRDINdXMmCmt9NNYjUA50BAI2dPpqetjaqq3gaPSAXsMvzNvRs="
-    },
-    skip_cleanup: true,
-    on: {
-      tags: true
-    }
-  }
+  before_cache: [
+    "rm -rf node_modules/.cache"
+  ],
+  before_script: [],
+  after_script: ["yarn run coveralls"]
 }
